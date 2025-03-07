@@ -9,12 +9,12 @@ on:
 
 jobs:
   request-approval:
-    name: Request Approval for Deploy
+    name: Deploy Approval
     environment: Packages
     runs-on: ubuntu-latest
     steps:
-      - name: Waiting for approval
-        run: echo "Waiting for manual approval"
+      - name: Approving
+        run: echo "Deploy approved, starting process.."
     
   trigger-deploy:
     name: Call Deploy Java Packages
