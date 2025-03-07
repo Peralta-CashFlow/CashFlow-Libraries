@@ -9,7 +9,7 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>${project.groupId}:${project.artifactId}</name>
+    <name>cashflow-auth-lib</name>
     <description>This package is responsible for maintaining the auth commons of CashFlow.</description>
     <url>https://github.com/Peralta-CashFlow</url>
 
