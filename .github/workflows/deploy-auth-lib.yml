@@ -9,15 +9,12 @@ on:
 
 jobs:
   trigger-deploy:
-    runs-on: ubuntu-latest
-    environment: Packages
+    name: Call Deploy Java Packages
     permissions:
       contents: read
-      packages: write
-    steps:
-      - name: Call Deploy Java Packages
-        uses: Peralta-CashFlow/CashFlow-WorkFlows/.github/workflows/java-packages-deploy-v1.yml@main
-        with:
-          package: 'Auth-Lib'
-          java_version: '21'
-          java_distribution: 'zulu'
+      packages: write 
+    uses: Peralta-CashFlow/CashFlow-WorkFlows/.github/workflows/java-packages-deploy-v1.yml@main
+    with:
+      package: 'Auth-Lib'
+      java_version: '21'
+      java_distribution: 'zulu'
