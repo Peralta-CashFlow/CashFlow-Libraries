@@ -1,0 +1,21 @@
+name: Deploy Auth Package
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "/Auth-Lib/*"
+
+jobs:
+  trigger-deploy:
+    environment: Packages
+    name: Call Deploy Java Packages
+    uses: Peralta-CashFlow/CashFlow-WorkFlows/.github/workflows/java-packages-deploy-v1.yml@main
+    with:
+      package: 'Auth-Lib'
+      java_version: '21'
+      java_distribution: 'zulu'
+    permissions:
+      contents: read
+      packages: write
