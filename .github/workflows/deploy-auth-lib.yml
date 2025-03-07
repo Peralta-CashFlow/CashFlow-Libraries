@@ -8,8 +8,17 @@ on:
       - "Auth-Lib/*"
 
 jobs:
+  request-approval:
+    name: Request Approval for Deploy
+    environment: Packages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Waiting for approval
+        run: echo "Waiting for manual approval"
+    
   trigger-deploy:
     name: Call Deploy Java Packages
+    needs: request-approval
     permissions:
       contents: read
       packages: write 
