@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.peralta.cashflow</groupId>
+    <artifactId>cashflow-commons</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>cashflow-commons-lib</name>
+    <description>This package is responsible for maintaining the commons of CashFlow.</description>
+    <url>https://github.com/Peralta-CashFlow</url>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Vinicius Peralta</name>
+            <email>vinicius-peralta@hotmail.com</email>
+            <organization>CashFlow</organization>
+            <organizationUrl>${project.url}</organizationUrl>
+        </developer>
+    </developers>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/Peralta-CashFlow/CashFlow-Libraries</url>
+        </repository>
+    </distributionManagement>
+
+</project>
