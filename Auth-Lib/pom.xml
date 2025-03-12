@@ -13,14 +13,6 @@
     <description>This package is responsible for maintaining the auth commons of CashFlow.</description>
     <url>https://github.com/Peralta-CashFlow</url>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.36</version>
-        </dependency>
-    </dependencies>
-
     <licenses>
         <license>
             <name>MIT License</name>
