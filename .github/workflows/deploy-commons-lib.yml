@@ -1,0 +1,29 @@
+name: Deploy Auth Package
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "Commons-Lib/*"
+
+jobs:
+  request-approval:
+    name: Deploy Approval
+    environment: Packages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Approving
+        run: echo "Deploy approved, starting process.."
+    
+  trigger-deploy:
+    name: Call Deploy Java Packages
+    needs: request-approval
+    permissions:
+      contents: read
+      packages: write 
+    uses: Peralta-CashFlow/CashFlow-WorkFlows/.github/workflows/java-packages-deploy-v1.yml@main
+    with:
+      package: 'Commons-Lib'
+      java_version: '21'
+      java_distribution: 'zulu'
