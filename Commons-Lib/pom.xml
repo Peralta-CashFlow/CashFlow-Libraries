@@ -5,12 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.peralta.cashflow</groupId>
-    <artifactId>cashflow-auth</artifactId>
+    <artifactId>cashflow-commons</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>cashflow-auth-lib</name>
-    <description>This package is responsible for maintaining the auth commons of CashFlow.</description>
+    <name>cashflow-commons-lib</name>
+    <description>This package is responsible for maintaining the commons of CashFlow.</description>
     <url>https://github.com/Peralta-CashFlow</url>
 
     <licenses>
