@@ -1,4 +1,4 @@
-name: Deploy Auth Package
+name: Deploy Commons Package
 
 on:
   push:
