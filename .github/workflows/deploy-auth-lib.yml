@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - "Auth-Lib/*"
+      - "Auth-Lib/**"
 
 jobs:
   request-approval:
