@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - "Commons-Lib/*"
+      - "Commons-Lib/**"
 
 jobs:
   request-approval:
