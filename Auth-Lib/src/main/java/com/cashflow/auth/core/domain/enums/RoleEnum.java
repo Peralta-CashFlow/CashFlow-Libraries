@@ -1,16 +1,19 @@
 package com.cashflow.auth.core.domain.enums;
 
-public enum RoleEnum {
+import org.springframework.security.core.GrantedAuthority;
 
-    CASH_FLOW_BASICS("cash-flow-basics");
+public enum RoleEnum implements GrantedAuthority {
 
-    private final String value;
+    CASH_FLOW_BASICS("CASH_FLOW_BASICS");
 
-    RoleEnum(String value) {
-        this.value = value;
+    RoleEnum(String role) {
+        this.role = role;
     }
 
-    public String getValue() {
-        return value;
+    private final String role;
+
+    @Override
+    public String getAuthority() {
+        return this.role;
     }
 }
