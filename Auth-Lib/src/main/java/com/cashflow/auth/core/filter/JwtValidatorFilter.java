@@ -14,12 +14,18 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import javax.crypto.SecretKey;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 
 public class JwtValidatorFilter extends OncePerRequestFilter {
 
     private final CashFlowJwtService cashFlowJwtService;
 
     private final String[] notFilteredEndpoints;
+
+    private final List<String> swaggerConstants = List.of(
+            "api-docs",
+            "/swagger"
+    );
 
     public JwtValidatorFilter(final CashFlowJwtService cashFlowJwtService,
                               final String[] notFilteredEndpoints) {
@@ -49,6 +55,7 @@ public class JwtValidatorFilter extends OncePerRequestFilter {
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
-        return Arrays.stream(notFilteredEndpoints).toList().contains(request.getServletPath());
+        return Arrays.stream(notFilteredEndpoints).toList().contains(request.getServletPath()) ||
+                swaggerConstants.stream().anyMatch(request.getServletPath()::contains);
     }
 }
