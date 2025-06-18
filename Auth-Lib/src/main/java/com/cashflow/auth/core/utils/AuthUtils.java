@@ -34,7 +34,8 @@ public class AuthUtils {
     private static final List<String> BASE_WHITELIST_ENDPOINTS = List.of(
             "/v3/api-docs/**",
             "/swagger-ui/**",
-            "/swagger-ui.html"
+            "/swagger-ui.html",
+            "/actuator/**"
     );
 
 }

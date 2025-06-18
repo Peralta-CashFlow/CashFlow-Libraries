@@ -6,7 +6,7 @@
 
     <groupId>com.peralta.cashflow</groupId>
     <artifactId>cashflow-auth</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <packaging>jar</packaging>
 
     <name>cashflow-auth-lib</name>
@@ -44,7 +44,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
-            <version>3.4.3</version>
+            <version>3.5.0</version>
         </dependency>
 
     </dependencies>

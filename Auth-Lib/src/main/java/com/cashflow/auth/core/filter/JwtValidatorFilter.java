@@ -27,6 +27,12 @@ public class JwtValidatorFilter extends OncePerRequestFilter {
             "/swagger"
     );
 
+    private final List<String> actuatorConstants = List.of(
+            "actuator",
+            "/health",
+            "/info"
+    );
+
     public JwtValidatorFilter(final CashFlowJwtService cashFlowJwtService,
                               final String[] notFilteredEndpoints) {
         this.cashFlowJwtService = cashFlowJwtService;
@@ -56,6 +62,7 @@ public class JwtValidatorFilter extends OncePerRequestFilter {
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
         return Arrays.stream(notFilteredEndpoints).toList().contains(request.getServletPath()) ||
-                swaggerConstants.stream().anyMatch(request.getServletPath()::contains);
+                swaggerConstants.stream().anyMatch(request.getServletPath()::contains) ||
+                actuatorConstants.stream().anyMatch(request.getServletPath()::contains);
     }
 }
