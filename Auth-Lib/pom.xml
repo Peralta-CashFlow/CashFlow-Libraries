@@ -6,7 +6,7 @@
 
     <groupId>com.peralta.cashflow</groupId>
     <artifactId>cashflow-auth</artifactId>
-    <version>0.0.2</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <name>cashflow-auth-lib</name>

@@ -20,22 +20,4 @@ class AuthUtilsTest {
         List<RoleEnum> result = AuthUtils.mapStringToRoleList("CASH_FLOW_BASICS,CASH_FLOW_BASICS");
         assertEquals(List.of(RoleEnum.CASH_FLOW_BASICS, RoleEnum.CASH_FLOW_BASICS), result);
     }
-
-    @Test
-    void givenApiWhiteList_whenWhiteListEndpoints_thenReturnsCombinedEndpointList() {
-        String[] apiWhiteList = {"/auth/user/register", "/auth/user/login"};
-        String[] result = AuthUtils.whiteListEndpoints(apiWhiteList);
-
-        assertArrayEquals(
-            new String[]{
-                "/auth/user/register",
-                "/auth/user/login",
-                "/v3/api-docs/**",
-                "/swagger-ui/**",
-                "/swagger-ui.html",
-                "/actuator/**"
-            },
-            result
-        );
-    }
 }

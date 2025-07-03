@@ -1,9 +1,10 @@
 package com.cashflow.auth.core.utils;
 
 import com.cashflow.auth.core.domain.enums.RoleEnum;
+import io.jsonwebtoken.security.Keys;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import javax.crypto.SecretKey;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -25,17 +26,11 @@ public class AuthUtils {
                 .toList();
     }
 
-    public static String[] whiteListEndpoints(String[] apiWhiteList) {
-        List<String> whiteListEndpoints = new ArrayList<>(Arrays.asList(apiWhiteList));
-        whiteListEndpoints.addAll(BASE_WHITELIST_ENDPOINTS);
-        return whiteListEndpoints.toArray(new String[0]);
+    public static SecretKey getJwtSecretKey() {
+        String jwtSecret = System.getenv("JWT_SECRET");
+        if (jwtSecret == null || jwtSecret.isEmpty()) {
+            throw new IllegalStateException("JWT_SECRET environment variable is not set");
+        }
+        return Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8));
     }
-
-    private static final List<String> BASE_WHITELIST_ENDPOINTS = List.of(
-            "/v3/api-docs/**",
-            "/swagger-ui/**",
-            "/swagger-ui.html",
-            "/actuator/**"
-    );
-
 }

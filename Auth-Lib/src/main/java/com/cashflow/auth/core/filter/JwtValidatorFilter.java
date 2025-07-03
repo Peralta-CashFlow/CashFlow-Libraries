@@ -1,7 +1,7 @@
 package com.cashflow.auth.core.filter;
 
 import com.cashflow.auth.core.domain.mapper.AuthenticationMapper;
-import com.cashflow.auth.core.service.jwt.CashFlowJwtService;
+import com.cashflow.auth.core.utils.AuthUtils;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import jakarta.servlet.FilterChain;
@@ -18,8 +18,6 @@ import java.util.List;
 
 public class JwtValidatorFilter extends OncePerRequestFilter {
 
-    private final CashFlowJwtService cashFlowJwtService;
-
     private final String[] notFilteredEndpoints;
 
     private final List<String> swaggerConstants = List.of(
@@ -33,9 +31,7 @@ public class JwtValidatorFilter extends OncePerRequestFilter {
             "/info"
     );
 
-    public JwtValidatorFilter(final CashFlowJwtService cashFlowJwtService,
-                              final String[] notFilteredEndpoints) {
-        this.cashFlowJwtService = cashFlowJwtService;
+    public JwtValidatorFilter(final String[] notFilteredEndpoints) {
         this.notFilteredEndpoints = notFilteredEndpoints;
     }
 
@@ -43,7 +39,7 @@ public class JwtValidatorFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         try {
             String jwtToken = request.getHeader("Authorization");
-            SecretKey secretKey = cashFlowJwtService.generateSecretKey();
+            SecretKey secretKey = AuthUtils.getJwtSecretKey();
             Claims claims = Jwts.parser()
                     .verifyWith(secretKey)
                     .build()
