@@ -8,6 +8,16 @@ import org.springframework.security.core.GrantedAuthority;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * This class defines the authentication object for CashFlow application,
+ * implementing Spring Security's Authentication interface.
+ *
+ * @see RoleEnum
+ * @see CashFlowCredentials
+ *
+ * @author Vinicius Peralta
+ * @since 1.0.0
+ */
 @Schema(description = "CashFlow authentication information")
 public class CashFlowAuthentication implements Authentication {
 

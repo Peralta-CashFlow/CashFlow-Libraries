@@ -16,6 +16,21 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * This class centralizes the CashFlow application's Spring Security configuration and should be imported
+ * into the main application context when using this library.
+ * <p>
+ * This class defines:
+ * <ul>
+ *   <li>Base whitelisted endpoints;</li>
+ *   <li>SpringSecurity filter chain;</li>
+ *   <li>Password encoder bean returning BCryptPasswordEncoder;</li>
+ * </ul>
+ *
+ * @author Vinicius Peralta
+ * @since 1.0.0
+ * @see #securityFilterChain(HttpSecurity, List, String[])
+ */
 @Configuration
 public class CashFlowSecurityConfig {
 
@@ -26,6 +41,19 @@ public class CashFlowSecurityConfig {
             "/actuator/**"
     );
 
+    /**
+     * Configures the Spring Security filter chain for the application, adding as base CashFlow's JWT validation filter
+     * and any custom filters provided, while also defining whitelisted endpoints that do not require authentication.
+     *
+     * @param httpSecurity The HttpSecurity object to configure
+     * @param apiFilters A list of custom filters to be added to the security chain
+     * @param securityWhitelistEndpoints An array of endpoints to be whitelisted (accessible without authentication)
+     * @return The configured SecurityFilterChain
+     * @throws Exception If an error occurs during configuration
+     * @see JwtValidatorFilter
+     *
+     * @since 1.0.0
+     */
     public static SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity,
                                             List<Filter> apiFilters,
                                             String[] securityWhitelistEndpoints
