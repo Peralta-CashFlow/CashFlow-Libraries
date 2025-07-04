@@ -6,7 +6,7 @@
 
     <groupId>com.peralta.cashflow</groupId>
     <artifactId>cashflow-auth</artifactId>
-    <version>0.0.2</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <name>cashflow-auth-lib</name>
@@ -56,6 +56,14 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <version>3.5.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- System Stubs -->
+        <dependency>
+            <groupId>uk.org.webcompere</groupId>
+            <artifactId>system-stubs-jupiter</artifactId>
+            <version>2.1.8</version>
             <scope>test</scope>
         </dependency>
 

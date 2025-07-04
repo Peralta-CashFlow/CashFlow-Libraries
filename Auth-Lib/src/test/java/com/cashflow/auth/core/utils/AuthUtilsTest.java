@@ -1,12 +1,19 @@
 package com.cashflow.auth.core.utils;
 
 import com.cashflow.auth.core.domain.enums.RoleEnum;
+import io.jsonwebtoken.security.Keys;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import uk.org.webcompere.systemstubs.environment.EnvironmentVariables;
+import uk.org.webcompere.systemstubs.jupiter.SystemStubsExtension;
 
+import javax.crypto.SecretKey;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@ExtendWith(SystemStubsExtension.class)
 class AuthUtilsTest {
 
     @Test
@@ -22,20 +29,21 @@ class AuthUtilsTest {
     }
 
     @Test
-    void givenApiWhiteList_whenWhiteListEndpoints_thenReturnsCombinedEndpointList() {
-        String[] apiWhiteList = {"/auth/user/register", "/auth/user/login"};
-        String[] result = AuthUtils.whiteListEndpoints(apiWhiteList);
-
-        assertArrayEquals(
-            new String[]{
-                "/auth/user/register",
-                "/auth/user/login",
-                "/v3/api-docs/**",
-                "/swagger-ui/**",
-                "/swagger-ui.html",
-                "/actuator/**"
-            },
-            result
+    void shouldReturnSecretKeyWhenEnvVariableIsSet(EnvironmentVariables environmentVariables) {
+        String secret = "12345678901234567890123456789012";
+        environmentVariables.set("JWT_SECRET", secret);
+        SecretKey key = AuthUtils.getJwtSecretKey();
+        assertNotNull(key);
+        assertEquals(
+                Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8)).getEncoded().length,
+                key.getEncoded().length
         );
+    }
+
+    @Test
+    void shouldThrowExceptionWhenEnvVariableIsNotSet(EnvironmentVariables environmentVariables) {
+        environmentVariables.set("JWT_SECRET", "");
+        IllegalStateException exception = assertThrows(IllegalStateException.class, AuthUtils::getJwtSecretKey);
+        assertEquals("JWT_SECRET environment variable is not set", exception.getMessage());
     }
 }
