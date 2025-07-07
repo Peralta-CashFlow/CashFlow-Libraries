@@ -1,5 +1,23 @@
 package com.cashflow.exception.core;
 
+/**
+ * CashFlowException is a custom exception class that extends the Exception class.
+ * It is used to represent exceptions specific to the CashFlow application.
+ * <p>
+ * This class includes additional fields for HTTP status code, title, message, class name,
+ * and method name to provide more context about the exception.
+ * </p>
+ *
+ * @see Exception
+ * @see #getHttpStatusCode()
+ * @see #getTitle()
+ * @see #getMessage()
+ * @see #getClassName()
+ * @see #getMethodName()
+ *
+ * @author Vinicius Peralta
+ * @since 1.0.0
+ */
 public class CashFlowException extends Exception {
     private final Integer httpStatusCode;
     private final String title;
