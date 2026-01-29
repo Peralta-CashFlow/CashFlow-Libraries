@@ -6,12 +6,17 @@
 
     <groupId>com.peralta.cashflow</groupId>
     <artifactId>cashflow-exceptions</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
 
     <name>cashflow-exceptions-lib</name>
     <description>This package is responsible for maintaining CashFlow's Exceptions.</description>
     <url>https://github.com/Peralta-CashFlow</url>
+
+    <properties>
+        <java.version>21</java.version>
+        <maven.compiler.release>21</maven.compiler.release>
+    </properties>
 
     <dependencies>
         <dependency>
