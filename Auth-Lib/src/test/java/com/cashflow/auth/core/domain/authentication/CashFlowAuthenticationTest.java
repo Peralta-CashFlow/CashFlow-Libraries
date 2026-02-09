@@ -1,6 +1,7 @@
 package com.cashflow.auth.core.domain.authentication;
 
 import com.cashflow.auth.core.domain.enums.RoleEnum;
+import com.cashflow.auth.core.templates.CashFlowAuthenticationTemplates;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -11,15 +12,7 @@ class CashFlowAuthenticationTest {
 
     private static final List<RoleEnum> roles = List.of(RoleEnum.CASH_FLOW_BASICS);
 
-    private static final CashFlowAuthentication cashFlowAuthentication = new CashFlowAuthentication(
-            1L,
-            "Vinicius",
-            "Peralta",
-            "vinicius@email.com",
-            roles,
-            true,
-            "jwtToken123"
-    );
+    private static final CashFlowAuthentication cashFlowAuthentication = CashFlowAuthenticationTemplates.cashFlowAuthentication(roles);
 
     @Test
     void whenGetAuthorities_thenReturnRoles() {

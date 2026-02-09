@@ -1,11 +1,14 @@
 package com.cashflow.auth.core.utils;
 
+import com.cashflow.auth.core.domain.authentication.CashFlowAuthentication;
 import com.cashflow.auth.core.domain.enums.RoleEnum;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -74,4 +77,19 @@ public class AuthUtils {
         }
         return Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8));
     }
+
+    /**
+     * Retrieves userId of CashFlowCredentials from SecurityContextHolder
+     *
+     * @return User id
+     *
+     * @see com.cashflow.auth.core.domain.authentication.CashFlowCredentials
+     *
+     * @since 1.0.5
+     */
+    public static Long getUserIdFromSecurityContext() {
+        CashFlowAuthentication authentication = (CashFlowAuthentication) Objects.requireNonNull(SecurityContextHolder.getContext().getAuthentication());
+        return Objects.requireNonNull(authentication.getCredentials()).id();
+    }
+
 }
