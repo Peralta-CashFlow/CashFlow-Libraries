@@ -2,6 +2,14 @@ package com.cashflow.commons.core.dto.request;
 
 import java.util.Locale;
 
+/**
+ *
+ * Basic generic object to maintain request basic attributes
+ *
+ * @author Vinicius Peralta
+ * @since 0.0.1
+ *
+ */
 public class BaseRequest<T> {
 
     private final String jwtToken;
