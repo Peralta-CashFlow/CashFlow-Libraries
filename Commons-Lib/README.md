@@ -21,6 +21,7 @@ Version: You should look for the latest version on [GitHub Packages](https://git
 Bellow you should found all the features for this Package.
 
 - [BaseRequest](#baserequest);
+- [PageRequest](#pagerequest)
 
 ### BaseRequest
 
@@ -33,3 +34,16 @@ The object receives the bellow parameters:
 - request: A generic object to be used in the request;
 
 _Example_: BaseRequest<String> baseRequest = new BaseRequest("jwtToken", Locale.US, "request");
+
+### PageRequest
+
+The PageRequest object is a generic request class that can receive data from the user to call APIs services.
+
+The object receives the bellow parameters:
+
+- pageNumber: The number of the requested page;
+- pageSize: The size of the page;
+- language: The Locale to be used in the request;
+- request: A generic object to be used in the request (optional);
+
+_Example_: PageRequest<Long> pageRequest = new PageRequest<>(0, 10, Locale.US, 1L);
