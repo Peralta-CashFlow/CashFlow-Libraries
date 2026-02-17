@@ -21,11 +21,11 @@ class PageResponseTest {
                 2
         );
 
-        assertEquals(items, pageResponse.getResponse());
-        assertEquals(1, pageResponse.getPageNumber());
-        assertEquals(10, pageResponse.getPageSize());
-        assertEquals(20, pageResponse.getTotalElements());
-        assertEquals(2, pageResponse.getTotalPages());
+        assertEquals(items, pageResponse.response());
+        assertEquals(1, pageResponse.pageNumber());
+        assertEquals(10, pageResponse.pageSize());
+        assertEquals(20, pageResponse.totalElements());
+        assertEquals(2, pageResponse.totalPages());
     }
 
 }
