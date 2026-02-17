@@ -3,6 +3,7 @@ package com.cashflow.commons.core.dto.response;
 import java.util.List;
 
 /**
+ *
  * Basic generic object to serve as a pagination response.
  *
  * @author Vinicius Peralta
