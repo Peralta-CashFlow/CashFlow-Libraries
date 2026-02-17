@@ -8,41 +8,11 @@ import java.util.List;
  *
  * @author Vinicius Peralta
  * @since 0.0.4
- *
  */
-public class PageResponse<T> {
-
-    private final List<T> response;
-    private final int pageNumber;
-    private final int pageSize;
-    private final long totalElements;
-    private final int totalPages;
-
-    public PageResponse(List<T> response, int pageNumber, int pageSize, long totalElements, int totalPages) {
-        this.response = response;
-        this.pageNumber = pageNumber;
-        this.pageSize = pageSize;
-        this.totalElements = totalElements;
-        this.totalPages = totalPages;
-    }
-
-    public List<T> getResponse() {
-        return response;
-    }
-
-    public int getPageNumber() {
-        return pageNumber;
-    }
-
-    public int getPageSize() {
-        return pageSize;
-    }
-
-    public long getTotalElements() {
-        return totalElements;
-    }
-
-    public int getTotalPages() {
-        return totalPages;
-    }
-}
+public record PageResponse<T>(
+        List<T> response,
+        int pageNumber,
+        int pageSize,
+        long totalElements,
+        int totalPages
+) {}
