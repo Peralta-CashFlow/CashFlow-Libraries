@@ -14,7 +14,7 @@ You should add the bellow dependency to your pom.xml file:
 </dependency>
 ```
 
-Version: You should look for the latest version on [GitHub Packages](https://github.com/Peralta-CashFlow/CashFlow-Libraries/packages/2433882);
+Version: You should look for the latest version on [GitHub Packages](https://github.com/Peralta-CashFlow/CashFlow-Libraries/packages/2861817);
 
 ## Features
 
