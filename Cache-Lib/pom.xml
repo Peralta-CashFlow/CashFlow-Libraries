@@ -5,12 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.peralta.cashflow</groupId>
-    <artifactId>cashflow-commons</artifactId>
-    <version>0.0.6</version>
+    <artifactId>cashflow-cache</artifactId>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>cashflow-commons-lib</name>
-    <description>This package is responsible for maintaining the commons of CashFlow.</description>
+    <name>cashflow-cache-lib</name>
+    <description>This package is responsible for maintaining the cache features of CashFlow.</description>
     <url>https://github.com/Peralta-CashFlow</url>
 
     <properties>
@@ -26,10 +26,10 @@
     </licenses>
 
     <dependencies>
-        <!-- JPA -->
+        <!-- Redis -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
             <version>4.1.0-M1</version>
             <scope>compile</scope>
         </dependency>
@@ -39,6 +39,12 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>6.1.0-M1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>5.21.0</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
