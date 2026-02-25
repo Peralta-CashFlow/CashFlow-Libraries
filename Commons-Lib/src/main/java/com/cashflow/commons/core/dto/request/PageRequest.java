@@ -18,19 +18,22 @@ public class PageRequest<T> {
     private final String search;
     private final T request;
     private final Locale language;
+    private final long userId;
 
-    public PageRequest(int pageNumber, int pageSize, Locale language, String search) {
+    public PageRequest(int pageNumber, int pageSize, Locale language, String search, long userId) {
         this.pageable = org.springframework.data.domain.PageRequest.of(pageNumber, pageSize);
         this.language = language;
         this.search = search;
+        this.userId = userId;
         this.request = null;
     }
 
-    public PageRequest(int pageNumber, int pageSize, Locale language, String search, T request) {
+    public PageRequest(int pageNumber, int pageSize, Locale language, String search, T request, long userId) {
         this.pageable = org.springframework.data.domain.PageRequest.of(pageNumber, pageSize);
         this.language = language;
         this.search = search;
         this.request = request;
+        this.userId = userId;
     }
 
     public Pageable getPageable() {
@@ -48,4 +51,6 @@ public class PageRequest<T> {
     public Locale getLanguage() {
         return language;
     }
+
+    public long getUserId() { return userId; }
 }

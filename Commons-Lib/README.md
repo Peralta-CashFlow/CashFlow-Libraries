@@ -31,11 +31,11 @@ The BaseRequest object is a generic request class that can receive data from the
 
 The object receives the bellow parameters:
 
-- jwtToken: The JWT token to be used in the request;
 - language: The Locale to be used in the request;
 - request: A generic object to be used in the request;
+- userId: The user id to be used in the request (optional);
 
-_Example_: BaseRequest<String> baseRequest = new BaseRequest("jwtToken", Locale.US, "request");
+_Example_: BaseRequest<String> baseRequest = new BaseRequest(Locale.US, "request", 1L);
 
 ### PageRequest
 
@@ -47,6 +47,7 @@ The object receives the bellow parameters:
 - pageSize: The size of the page;
 - language: The Locale to be used in the request;
 - request: A generic object to be used in the request (optional);
+- userId: The user id to be used in the request (optional);
 
 _Example_: PageRequest<Long> pageRequest = new PageRequest<>(0, 10, Locale.US, 1L);
 
