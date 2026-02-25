@@ -10,24 +10,16 @@ class BaseRequestTest {
 
     private final Long number = 1L;
     private final Locale locale = Locale.getDefault();
-    private final String jwtToken = "jwt";
+    private final Long userId = 123L;
 
     @Test
     void allArgsConstructor() {
-        BaseRequest<Long> baseRequest = new BaseRequest<>(jwtToken, locale, number);
+        BaseRequest<Long> baseRequest = new BaseRequest<>(locale, number, userId);
         assertAll(() -> {
             assertEquals(number, baseRequest.getRequest());
             assertEquals(locale, baseRequest.getLanguage());
-            assertEquals(jwtToken, baseRequest.getJwtToken());
+            assertEquals(userId, baseRequest.getUserId());
         });
     }
 
-    @Test
-    void languageAndRequestConstructor() {
-        BaseRequest<Long> baseRequest = new BaseRequest<>(locale, number);
-        assertAll(() -> {
-            assertEquals(number, baseRequest.getRequest());
-            assertEquals(locale, baseRequest.getLanguage());
-        });
-    }
 }

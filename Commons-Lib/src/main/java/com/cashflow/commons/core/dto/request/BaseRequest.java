@@ -12,26 +12,16 @@ import java.util.Locale;
  */
 public class BaseRequest<T> {
 
-    private final String jwtToken;
-
     private final Locale language;
 
     private final T request;
 
-    public BaseRequest(String jwtToken, Locale language, T request) {
-        this.jwtToken = jwtToken;
+    private final long userId;
+
+    public BaseRequest(Locale language, T request, long userId) {
         this.language = language;
         this.request = request;
-    }
-
-    public BaseRequest(Locale language, T request) {
-        this.jwtToken = null;
-        this.language = language;
-        this.request = request;
-    }
-
-    public String getJwtToken() {
-        return jwtToken;
+        this.userId = userId;
     }
 
     public Locale getLanguage() {
@@ -41,5 +31,6 @@ public class BaseRequest<T> {
     public T getRequest() {
         return request;
     }
-    
+
+    public long getUserId() { return userId; }
 }
