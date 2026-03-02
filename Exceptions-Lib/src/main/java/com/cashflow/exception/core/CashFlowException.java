@@ -18,7 +18,7 @@ package com.cashflow.exception.core;
  * @author Vinicius Peralta
  * @since 1.0.0
  */
-public class CashFlowException extends Exception {
+public class CashFlowException extends RuntimeException {
     private final Integer httpStatusCode;
     private final String title;
     private final String message;
