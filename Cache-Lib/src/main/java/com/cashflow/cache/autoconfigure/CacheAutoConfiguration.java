@@ -1,5 +1,6 @@
 package com.cashflow.cache.autoconfigure;
 
+import com.cashflow.cache.annotations.clear.CacheClearAspect;
 import com.cashflow.cache.config.RedisConfig;
 import com.cashflow.cache.service.CacheService;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
@@ -25,5 +26,10 @@ public class CacheAutoConfiguration {
     @ConditionalOnMissingBean
     public CacheService cacheService(org.springframework.data.redis.core.RedisTemplate<String, Object> redisTemplate) {
         return new CacheService(redisTemplate);
+    }
+
+    @Bean
+    public CacheClearAspect cacheClearAspect(CacheService cacheService) {
+        return new CacheClearAspect(cacheService);
     }
 }

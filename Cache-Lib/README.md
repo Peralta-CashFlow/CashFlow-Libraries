@@ -22,6 +22,7 @@ Bellow you should found all the features for this Package.
 
 - [RedisConfig](#redisconfig);
 - [CacheService](#cacheservice);
+- [@CacheClear](#cacheclear);
 
 ## RedisConfig
 
@@ -77,5 +78,23 @@ private final CacheService cacheService;
 
 private void example() {
     cacheService.invalidateCacheByPattern("cacheKey1-*");   
+}
+```
+
+## @CacheClear
+
+This annotation can be used to clear the cache for a specific method. 
+It will invalidate the cache for the given key pattern when the annotated method is finalized. 
+Example of using:
+
+```java
+import com.cashflow.cache.annotations.clear.CacheClear;
+
+@CacheClear(
+        value = "<APP_BASE_CACHE_KEY>::" + "<FEATURE_CACHE_KEY>::",
+        patterns = {"#request.example + '-*'"}
+)
+public void exampleMethod(Request request) {
+    // Method implementation
 }
 ```
